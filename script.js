@@ -1,25 +1,18 @@
 function create_canvas() {
     let canvas = document.createElement("canvas");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth * scale;
+    canvas.height = window.innerHeight * scale;
     document.body.appendChild(canvas);
     return canvas.getContext("2d");
 }
 
-// function add_point(x, y) {
-//     let el = document.createElement("div");
-//     el.className = "point";
-//     el.style.left = `${x}px`;
-//     el.style.top = `${y}px`;
-//     document.body.appendChild(el);
-// }
-
+const scale = window.devicePixelRatio || 1;
 const ctx = create_canvas();
+ctx.scale(scale, scale);
 ctx.fillStyle = "black";
 
 function line(x1, y1, x2, y2) {
     ctx.beginPath();
-    // ctx.strokeStyle = `rgb(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)})`
     ctx.moveTo(x1, y1);
     ctx.lineTo(x2, y2);
     ctx.stroke();
@@ -27,7 +20,6 @@ function line(x1, y1, x2, y2) {
 }
 
 function add_point(x, y, c) {
-    // ctx.fillRect(x - ts/2, y - ts/2, ts, ts);
     c = c || "black";
     ctx.beginPath();
     ctx.strokeStyle = c;
@@ -45,14 +37,6 @@ const pick_random = arr => arr[Math.floor(Math.random() * arr.length)];
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-
-// function too_close(q) {
-//     for (let point of points) {
-//         if (Math.hypot(q[0] - point[0], q[1] - point[1]) < r) return true;
-//     }
-
-//     return false;
-// }
 
 function cell(p) {
     return [
@@ -114,7 +98,6 @@ async function main(p) {
     let top = 1;
     while (active_points.length > 0) {
         let active = pick_random(active_points);
-        // active = active_points[0];
         for (let i = 0; i < k; i++) {
             let theta = random(0, 2 * Math.PI);
             let radius = random(r, 2 * r);
