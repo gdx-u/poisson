@@ -20,14 +20,6 @@ function line(x1, y1, x2, y2) {
     ctx.closePath();
 }
 
-function remove_point(x, y) {
-    ctx.beginPath();
-    ctx.fillStyle = "white";
-    ctx.arc(x - 1, y - 1, ts / 2 + 2, 0, 2 * Math.PI);
-    ctx.fill();
-    ctx.closePath();
-}
-
 function add_point(x, y, c) {
     c = c || "black";
     ctx.beginPath();
@@ -189,10 +181,6 @@ async function connect(n) {
 
             for (let p2 of to_right) {
                 let ds = 240 * (Math.hypot(p2[0] - point[0], p2[1] - point[1]) - min_dist) / (max_dist - min_dist);
-                // add_point(...point, "white");
-                // add_point(...p2, "white");
-                remove_point(...point);
-                remove_point(...p2);
                 line(point[0], point[1], p2[0], p2[1]);
             }
             if (++count == top) {
