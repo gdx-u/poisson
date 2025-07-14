@@ -77,7 +77,7 @@ let r = 4;
 const dw = window.innerWidth;
 const dh = window.innerHeight;
 
-const e_mod = 1.4;
+let e_mod = 1.4;
 
 let l = r / Math.SQRT2;
 
