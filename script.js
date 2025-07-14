@@ -165,9 +165,9 @@ document.onkeydown = e => {
 
 
 async function connect(n) {
-    //ctx.fillStyle = "white";
-    //ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
-    //ctx.fillStyle = "black";
+    ctx.fillStyle = "white";
+    ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+    ctx.fillStyle = "black";
     n = n | 3;
     let count = 0;
     let top = 1;
