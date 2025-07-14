@@ -164,9 +164,9 @@ document.onkeydown = e => {
 
 
 async function connect(n) {
-    ctx.fillStyle = "white";
-    ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
-    ctx.fillStyle = "black";
+    //ctx.fillStyle = "white";
+    //ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+    //ctx.fillStyle = "black";
     n = n | 3;
     let count = 0;
     let top = 1;
@@ -180,6 +180,8 @@ async function connect(n) {
 
             for (let p2 of to_right) {
                 let ds = 240 * (Math.hypot(p2[0] - point[0], p2[1] - point[1]) - min_dist) / (max_dist - min_dist);
+                add_point(...point, "white");
+                add_point(...p2, "white");
                 line(point[0], point[1], p2[0], p2[1]);
             }
             if (++count == top) {
